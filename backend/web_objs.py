@@ -2,13 +2,13 @@ class Class:
     def __init__(self, unique_id, prof, course_num, name, id):
         self.unique_id = unique_id;
         self.prof = prof;
-        self.course_name = course_num;
+        self.course_num = course_num;
         self.name = name;
         self.key = id;
     def get_map(self):
         return {'unique_id' : self.unique_id,
                 'prof': self.prof,
-                'course_name': self.course_name,
+                'course_num': self.course_num,
                 'name': self.name,
                 'key': self.key};
 
