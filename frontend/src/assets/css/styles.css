@@ -1,8 +1,10 @@
-.logo {
+.logoContainer {
 	margin:5vh;
-	border:1px solid red;
 	width: 50vw;
+}
 
+.logo {
+	width: 50vw;
 }
 
 .headerContainer {
