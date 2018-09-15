@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 import Header from '../HeaderFooter/Header'
 import URL from '../URLHelperFunctions';
+import $ from 'jquery';
 
 class SchoolSearch extends Component {
 
 	constructor() {
 		super();
+		var queryString = URL.queryString();
+		var schoolName = URL.plusToSpace(queryString.substring(queryString.indexOf("=")+1));
 		this.state = {
-			"schools" : [
-				"UT_Austin",
-				"Rice"
-			]
+			"schoolName": schoolName,
+			"schools" : []
 		}
+	}
+
+	componentWillMount() {
+		$.ajax({
+			url: 'http://35.202.103.55/schoolsearch?' + URL.toUrl(this.state.schoolName), dataType: 'json', cache: false, 
+			success: function(data) {
+				var state = this.state;
+				state.schools = data.schools;
+				console.log(state.schools);
+				this.setState(state);
+			}.bind(this), error: function(xhr, status, error) {
+			}.bind(this)
+		});
+
 	}
 
 	noSchools() {

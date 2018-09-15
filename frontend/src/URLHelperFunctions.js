@@ -44,8 +44,6 @@ class URLHelperFunctions {
 
 	//Helper method. Use the other two methods instead
 	static convert(input, take, convert) {
-		console.log("URL Convert Test");
-		console.log("Input = " + input);
 		var result = "";
 		for ( let character of input) {
 			if (character === take) {
@@ -55,7 +53,6 @@ class URLHelperFunctions {
 				result+=character;
 			}
 		}
-		console.log("Output = " + result);
 		return result;
 	}
 

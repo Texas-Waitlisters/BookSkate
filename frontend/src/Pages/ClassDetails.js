@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
 import Header from '../HeaderFooter/Header'
 import URL from '../URLHelperFunctions';
+import $ from 'jquery';
 
 class ClassDetails extends Component {
 
 	constructor() {
 		super();
 		this.state = {
-			"class" : {
-				"name":"Data Structures",
-				"Professor": "Mike Scott",
-				"course_num": "CS314",
-				"Unique": "1, 2, 3, 4",
-				"key": 4
-			},
-			"items": [
-				{
-					"name": "iClicker",
-					"image_url": "https://www.iclicker.com/media/1140/ic-student-remotes-detail.jpg",
-					"price": 30
-				},
-				{
-					"name": "Comp Systems Textbook",
-					"image_url": "https://images-na.ssl-images-amazon.com/images/I/41AoUQujOCL._SX387_BO1,204,203,200_.jpg",
-					"price": 50,
-					"isbn": "978-0134092669"
-				}
-			],
+			"key":URL.getParamValue("key"),
+			"class" : {},
+			"items": [],
 			"checked": []
 		}
 		for (var index = 0; index < this.state.items.length; index++) {
 			this.state.checked=true;
 		}
+	}
+
+	componentWillMount() {
+		$.ajax({
+			url: 'http://35.202.103.55/getclass?key=' + this.state.key, dataType: 'json', cache: false, 
+			success: function(data) {
+				var state = this.state;
+				state.class = data.class;
+				state.items = data.items
+				this.setState(state);
+			}.bind(this), error: function(xhr, status, error) {
+			}.bind(this)
+		});
 	}
 
 	toggleCheckbox(index) {

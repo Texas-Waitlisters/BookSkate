@@ -1,43 +1,31 @@
 import React, { Component } from 'react';
 import Header from '../HeaderFooter/Header'
 import URL from '../URLHelperFunctions';
+import $ from 'jquery';
 
 class ClassSearch extends Component {
 
 	constructor() {
 		super();
+		var queryString = URL.queryString();
 		this.state = {
-			"classes" : [
-				{
-					"name":"Principles of OS",
-					"Professor": "Alison Norman",
-					"course_num": "CS439",
-					"Unique": "1, 2, 3, 4",
-					"key": 1
-				},
-				{
-					"name":"Principles of Comp Arch",
-					"Professor": "Bill Young",
-					"course_num": "CS429",
-					"Unique": "1, 2, 3, 4",
-					"key": 2
-				},
-				{
-					"name":"Modern Web Apps",
-					"Professor": "Devdatta Kulkarni",
-					"course_num": "CS373",
-					"Unique": "1, 2, 3, 4",
-					"key": 3
-				},
-				{
-					"name":"Data Structures",
-					"Professor": "Mike Scott",
-					"course_num": "CS314",
-					"Unique": "1, 2, 3, 4",
-					"key": 4
-				}
-			]
-		}
+			"schoolName": URL.getSchoolName(),
+			"queryString" : queryString,
+			"classes" : []
+		};
+	}
+
+	componentWillMount() {
+		$.ajax({
+			url: 'http://35.202.103.55/getclasses?school=' + URL.toUrl(this.state.schoolName) + "&" + URL.convert(this.state.queryString, "+", "_"), dataType: 'json', cache: false, 
+			success: function(data) {
+				var state = this.state;
+				state.classes = data.classes;
+				console.log(state.schools);
+				this.setState(state);
+			}.bind(this), error: function(xhr, status, error) {
+			}.bind(this)
+		});
 	}
 
 	noClasses() {
@@ -46,21 +34,27 @@ class ClassSearch extends Component {
 		);
 	}
 
+	noSearchTerms() {
+		return (
+			<div className="wide centered centerText">Please type in search terms.</div>
+		);
+	}
+
 	render() {
 		var queryString = URL.queryString();
-		var schoolName = URL.getSchoolName();
-		var searchMode = queryString;
+		var schoolName = this.state.schoolName;
+		var searchMode = this.state.queryString;
 		if (searchMode.includes("=")) {
 			searchMode = queryString.substring(0, queryString.indexOf("="));
 		}
 		var searchTerms = URL.toUrl(URL.plusToSpace(queryString));
 		let allClasses = this.state.classes.map(course => {
 			return (
-				<a href={"/class/" + course.key} className="listBoxLink">
+				<a href={"/class/" + course.key} className="listBoxLink" key={course.key}>
 					<div className="wide centered listBox">
-						<h3>{course.name.replace("_", " ")}</h3>
-						<p>{course.course_num + " - " + course.Professor}<br/>
-						{course.Unique}</p>
+						<h3>{URL.toString(course.name)}</h3>
+						<p>{course.course_num + " - " + course.prof}<br/>
+						{course.unique_id}</p>
 					</div>
 				</a>
 			);
@@ -76,11 +70,15 @@ class ClassSearch extends Component {
 			"CourseId": "Unique Id"
 		}
 
+		if (URL.getParamValue(searchMode) === "") {
+			allClasses = this.noSearchTerms();
+		}
+
 		return(
 			<div className="pageContent">
 				<Header />
 				<h1 className="narrow centered centerText">{schoolName}</h1>
-				<form className="wide searchbar centered" action="" onsubmit="transformUrl();">
+				<form className="wide searchbar centered" action="">
 					<input id="classSearchField" className="wideSearchField" type="text" placeholder={"Search Class by " + searchModeDisplay[searchMode]} defaultValue={URL.plusToSpace(URL.getParamValue(searchMode))} name={searchMode} />
 					<button type="submit"><i className="fa fa-search"></i></button>
 				</form>

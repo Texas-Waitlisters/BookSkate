@@ -7,10 +7,7 @@ class ClassSearchSelect extends Component {
 	constructor() {
 		super();
 		this.state = {
-			"schools" : [
-				"UT_Austin",
-				"Rice"
-			]
+			"schools" : []
 		}
 	}
 
