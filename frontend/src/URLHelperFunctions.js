@@ -31,6 +31,12 @@ class URLHelperFunctions {
 		return result.substring(result.lastIndexOf("/")+1);
 	}
 
+	static getSchoolName() {
+		var url=window.location.href;
+		var schoolName = url.substring(url.indexOf("/classSearch/") + "/classSearch/".length, url.lastIndexOf("/"));
+		return this.toString(schoolName);
+	}
+
 	static lastItem(item) {
 		var result = item;
 		return result.substring(result.lastIndexOf("/")+1);
@@ -97,6 +103,10 @@ class URLHelperFunctions {
 		return result;
 	}
 
+	static plusToSpace(string) {
+		return this.convert(string, "+", " ");
+	}
+
 	static test() {
 		alert(this.getSortItem("default") + "\n"+
 			this.getSortDirection(true) + "\n" + 
@@ -119,20 +129,16 @@ class URLHelperFunctions {
 		return result;
 	}
 
-	static getSortItem(standard, options) {
-		var result = standard;
-		let paramName = "sort=";
+	static getParamValue(paramName) {
 		let qs = this.queryString().split("&");
 		try {
 			for (var param of qs) {
-				if (param.includes(paramName)) {
-					let entry = param.substring(paramName.length);
-					if (options.includes(entry))
-					result = entry;
+				if (param.includes(paramName+"=")) {
+					return param.substring(paramName.length+1);
 				}
 			}
 		} catch(err) {}
-		return result;
+		return "";
 	}
 
 	static getSortDirection(standard) {
@@ -173,92 +179,5 @@ class URLHelperFunctions {
 		return result;
 	}
 
-	static getGenres(standard) {
-		let options = FilterHelper.validGenres();
-		var result = standard;
-		let paramName = "genres=";
-		let qs = this.queryString().split("&");
-		try {
-			for (var param of qs) {
-				if (param.includes(paramName)) {
-					let entry = param.substring(paramName.length+1, param.length-1);
-					result = [];
-					let filters = (entry.split(","));
-					for (var filter of filters) {
-						if (options.includes(filter)){
-							result.push(filter);
-						}
-					}	
-				}
-			}
-		} catch (err){}	
-		return result;
-	}
-
-	static getFiltersInt(standard, options) {
-		var result = standard;
-		let paramName = "filters=";
-		let qs = this.queryString().split("&");
-		try {
-			for (var param of qs) {
-				if (param.includes(paramName)) {
-					let entry = param.substring(paramName.length+1, param.length-1);
-					result = [];
-					let filters = (entry.split(","));
-					for (var filter of filters) {
-						let intFilter = parseInt(filter);
-						if (options.includes(intFilter)){
-							result.push(intFilter);
-						}
-					}	
-				}
-			}
-		} catch (err){}	
-		return result;
-	}
-
-	static getPage(standard) {
-		var result = standard;
-		let paramName = "p=";
-		let qs = this.queryString().split("&");
-		for (var param of qs) {
-			if (param.includes(paramName)) {
-				result = param.substring(paramName.length);
-
-			}
-		}
-		return parseInt(result);
-	}
-
-	static encodeSortFilter(state, defSort) {
-		var edited = false;
-		var result = "?";
-		if (state.sort!=defSort) {
-			edited = true;
-			result += "sort=" + state.sort + "&";
-		} 
-		if (!state.order) {
-			edited = true;
-			result += "dir=" + "desc" + "&";
-		}
-		if (state.filters != undefined && state.filters.length>0) {
-			edited = true;
-			result += "filters=[" + state.filters + "]" + "&";
-		}
-		if (state.genres != undefined && state.genres.length>0) {
-			edited = true;
-			result += "genres=[" + state.genres + "]" + "&";
-		}
-		if (state.page != 1) {
-			edited = true;
-			result += "p=" + state.page + "&";
-		}
-		if (edited)
-			return result.substring(0, result.length-1);
-		else return "";
-
-	}
-
-	
 } 
 export default URLHelperFunctions;
