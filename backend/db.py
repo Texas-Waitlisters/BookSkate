@@ -8,14 +8,14 @@ def get_schools(name):
 #Return list<Class> of classes like this
 #Unique_id, prof, course_num and name may be None
 def get_classes(school, unique_id, prof, course_num, name):
-    return [Class("","","","","")];
+    return [Class("12345","bill young","cs429","computer architecture",15)];
 
 #Using class id (defined by database not by university)
 #Return Class object for specified class
 def get_class(id):
-    return Class("","","","","");
+    return Class("12345","bill young","cs429","computer architecture",15);
 
 #Using class id (defined by database not by university)
 #Return list<Item> object for specified class
 def get_class_item_list(id):
-    return [Item("","",0,"")];
+    return [Item("Textbook","/image1.png",50,"12345")];
