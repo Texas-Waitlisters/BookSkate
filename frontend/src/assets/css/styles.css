@@ -1,0 +1,30 @@
+.logo {
+	margin:5vh;
+	border:1px solid red;
+	width: 50%;
+
+}
+
+.headerContainer {
+	padding-left: auto;
+	padding-right:auto;
+	width:100%;
+}
+
+.navbar {
+	height: 3vh;
+	background-color: black;
+}
+
+.wide {
+	width:70%;
+}
+
+.narrow {
+	width:50%;
+}
+
+.centered {
+	margin-left:auto;
+	margin-right:auto;
+}
