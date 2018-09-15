@@ -7,24 +7,29 @@ class ClassSearch extends Component {
 
 	constructor() {
 		super();
-		var queryString = URL.queryString();
+		let url = window.location.href;
+		let queryString = URL.lastUrlItem(0).substring(URL.lastUrlItem(0).indexOf("/By?") + "/By?".length);
+		let schoolInfo = url.substring(url.indexOf("classSearch/") + "classSearch/".length, url.indexOf("/By?"));
+		let schoolId = schoolInfo.substring(0, schoolInfo.indexOf("="));		
 		this.state = {
-			"schoolName": URL.getSchoolName(),
+			"schoolId": schoolId,
+			"schoolName": URL.toString(schoolInfo.substring(schoolInfo.indexOf("=") + 1)),
 			"queryString" : queryString,
 			"classes" : []
 		};
 	}
 
 	componentWillMount() {
+		console.log('http://35.202.103.55/getclasses?key=' + URL.toUrl(this.state.schoolId) + "&" + URL.convert(this.state.queryString, "+", "_"));
 		$.ajax({
-			url: 'http://35.202.103.55/getclasses?school=' + URL.toUrl(this.state.schoolName) + "&" + URL.convert(this.state.queryString, "+", "_"), dataType: 'json', cache: false, 
+			url: 'http://35.202.103.55/getclasses?key=' + URL.toUrl(this.state.schoolId) + "&" + URL.convert(this.state.queryString, "+", "_"), dataType: 'json', cache: false, 
 			success: function(data) {
 				var state = this.state;
 				state.classes = data.classes;
-				console.log(state.schools);
+				console.log(state.classes);
 				this.setState(state);
 			}.bind(this), error: function(xhr, status, error) {
-			}.bind(this)
+			}
 		});
 	}
 
@@ -47,7 +52,6 @@ class ClassSearch extends Component {
 		if (searchMode.includes("=")) {
 			searchMode = queryString.substring(0, queryString.indexOf("="));
 		}
-		var searchTerms = URL.toUrl(URL.plusToSpace(queryString));
 		let allClasses = this.state.classes.map(course => {
 			return (
 				<a href={"/class/" + course.key} className="listBoxLink" key={course.key}>
@@ -59,7 +63,7 @@ class ClassSearch extends Component {
 				</a>
 			);
 		});
-		if (allClasses == "") {
+		if (allClasses === "") {
 			allClasses = this.noClasses();
 		}
 

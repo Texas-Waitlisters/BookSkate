@@ -6,7 +6,6 @@ Examples of use:
 URL.toString("The_Name_or_title_of_something") returns "The Name or title of something"
 URL.toUrl("The Name or title of something") returns "The_Name_or_title_of_something"
 */
-import FilterHelper from './FilterHelper';
 
 class URLHelperFunctions {
 
@@ -59,7 +58,7 @@ class URLHelperFunctions {
 	static urlPageNumber(totalPages) {
 		let url = window.location.href;
 		let indexOfP = url.lastIndexOf("?p=");
-		if (indexOfP == -1)
+		if (indexOfP === -1)
 			return 1;
 		let pageNumber = url.substring(indexOfP + 3);
 		if (pageNumber < 1)
@@ -71,7 +70,7 @@ class URLHelperFunctions {
 		var index = 0; 
 		var result="";
 		var afterSpace = false;
-		if (words != undefined)
+		if (words !== undefined)
 		for (;index < words.length; index++) {
 			if (index === 0)
 				result += words.charAt(index).toUpperCase();
@@ -92,7 +91,7 @@ class URLHelperFunctions {
 
 	static queryString() {
 		var result = "";
-		let Url = window.location.href;
+		var Url = window.location.href;
 		if (Url.includes("?")) {
 			let queryString = Url.substring(Url.indexOf("?") + 1,Url.length);
 			result = queryString;
@@ -102,13 +101,6 @@ class URLHelperFunctions {
 
 	static plusToSpace(string) {
 		return this.convert(string, "+", " ");
-	}
-
-	static test() {
-		alert(this.getSortItem("default") + "\n"+
-			this.getSortDirection(true) + "\n" + 
-			"[" + this.getFilters([]) + "]" + "\n" + 
-			this.getPage(1));
 	}
 
 	static getSearchQuery() {
@@ -146,8 +138,8 @@ class URLHelperFunctions {
 			for (var param of qs) {
 				if (param.includes(paramName)) {
 					let entry = param.substring(paramName.length);
-					if (entry=="asc" || entry=="desc")
-					result = entry=="asc";
+					if (entry==="asc" || entry==="desc")
+					result = entry==="asc";
 					console.log(result);
 				}
 			}

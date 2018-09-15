@@ -16,17 +16,17 @@ class SchoolSearch extends Component {
 	}
 
 	componentWillMount() {
+		console.log(URL.toUrl(this.state.schoolName));
 		$.ajax({
-			url: 'http://35.202.103.55/schoolsearch?' + URL.toUrl(this.state.schoolName), dataType: 'json', cache: false, 
+			url: 'http://35.202.103.55/schoolsearch?school=' + URL.toUrl(this.state.schoolName), dataType: 'json', cache: false, 
 			success: function(data) {
+				console.log(data);
 				var state = this.state;
 				state.schools = data.schools;
-				console.log(state.schools);
 				this.setState(state);
 			}.bind(this), error: function(xhr, status, error) {
-			}.bind(this)
+			}
 		});
-
 	}
 
 	noSchools() {
@@ -40,15 +40,15 @@ class SchoolSearch extends Component {
 		var schoolName = URL.plusToSpace(queryString.substring(queryString.indexOf("=")+1));
 		let allSchools = this.state.schools.map(school => {
 			return (
-				<a href={"classSearch/" + school} className="listBoxLink">
+				<a href={"classSearch/" + school["id"]+"="+URL.toUrl(school["name"])} className="listBoxLink">
 					<div className="wide listBox">
-						<h3>{school.replace("_", " ")}</h3>
+						<h3>{URL.convert(school["name"], "_", " ")}</h3>
 					</div>
 				</a>
 			);
 		});
 
-		if (allSchools == "") {
+		if (allSchools === "") {
 			allSchools = this.noSchools();
 		}
 
