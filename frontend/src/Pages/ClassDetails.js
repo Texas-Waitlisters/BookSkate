@@ -26,18 +26,30 @@ class ClassDetails extends Component {
 					"price": 50,
 					"isbn": "978-0134092669"
 				}
-			]
+			],
+			"checked": []
 		}
+		for (var index = 0; index < this.state.items.length; index++) {
+			this.state.checked=true;
+		}
+	}
+
+	toggleCheckbox(index) {
+		// var state = this.state;
+		// state.checked[index] = !state.checked[index];
+		// this.setState = state;
 	}
 
 	render() {
 		var totalCost = 0;
+		var index = 0;
 		let allItems = this.state.items.map(item => {
 			var isbn = "";
 			totalCost += item.price;
 			if (item.isbn != undefined) {
 				return (
 					<div className="wide centered itemRow">
+						<input className="checkbox" onClick={() => this.toggleCheckbox(index)} type="checkbox" checked={this.state.checked[index]}/>
 						<div className="itemBox">
 							<img className="centerText" src={item.image_url}/>
 							<p>
@@ -51,6 +63,7 @@ class ClassDetails extends Component {
 			} else {
 				return (
 					<div className="wide centered itemRow">
+						<input className="checkbox" onClick={() => this.toggleCheckbox(index)} type="checkbox" checked={this.state.checked[index]}/>
 						<div className="itemBox">
 							<img src={item.image_url}/>
 							<p>
@@ -61,7 +74,7 @@ class ClassDetails extends Component {
 					</div>
 				);
 			}
-			
+			index++;
 		});
 
 		return(

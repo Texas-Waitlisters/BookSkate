@@ -35,9 +35,15 @@ class ClassSearch extends Component {
 					"course_num": "CS314",
 					"Unique": "1, 2, 3, 4",
 					"key": 4
-				},
+				}
 			]
 		}
+	}
+
+	noClasses() {
+		return (
+			<div className="wide centered centerText">No classes found.</div>
+		);
 	}
 
 	render() {
@@ -59,13 +65,23 @@ class ClassSearch extends Component {
 				</a>
 			);
 		});
+		if (allClasses == "") {
+			allClasses = this.noClasses();
+		}
+
+		let searchModeDisplay = {
+			"Name": "Class Name",
+			"Professor": "Professor",
+			"ClassNum": "Course Number",
+			"CourseId": "Unique Id"
+		}
 
 		return(
 			<div className="pageContent">
 				<Header />
 				<h1 className="narrow centered centerText">{schoolName}</h1>
 				<form className="wide searchbar centered" action="" onsubmit="transformUrl();">
-					<input id="classSearchField" className="wideSearchField" type="text" placeholder={"Search classes by " + searchMode} defaultValue={URL.plusToSpace(URL.getParamValue(searchMode))} name={searchMode} />
+					<input id="classSearchField" className="wideSearchField" type="text" placeholder={"Search Class by " + searchModeDisplay[searchMode]} defaultValue={URL.plusToSpace(URL.getParamValue(searchMode))} name={searchMode} />
 					<button type="submit"><i className="fa fa-search"></i></button>
 				</form>
 				<br />

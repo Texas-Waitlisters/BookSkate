@@ -6,7 +6,7 @@ class Header extends Component {
 		return(
 			<div>
 				<div className="headerContainer">
-					<div className="logo centered">jhbbjjhb</div>
+					<a href="/"><div className="logo centered">jhbbjjhb</div></a>
 				</div>
 				<div className="navbar"></div>
 			</div>
