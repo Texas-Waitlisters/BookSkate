@@ -1,7 +1,7 @@
 from flask import Flask, request
 from web_objs import Class, Item
 from db import *
-import json, jsonpickle
+import json
 app = Flask(__name__)
 
 @app.route('/schoolsearch')
@@ -27,4 +27,4 @@ def search_class():
     return json.dumps(data)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',port=80)
