@@ -1,30 +1,96 @@
 .logo {
 	margin:5vh;
 	border:1px solid red;
-	width: 50%;
+	width: 50vw;
 
 }
 
 .headerContainer {
 	padding-left: auto;
 	padding-right:auto;
-	width:100%;
+	width:100vw;
 }
 
 .navbar {
 	height: 3vh;
 	background-color: black;
+	margin-bottom:5vw;
 }
 
 .wide {
-	width:70%;
+	width:70vw;
 }
 
 .narrow {
-	width:50%;
+	width:50vw;
 }
 
 .centered {
 	margin-left:auto;
 	margin-right:auto;
+}
+
+form button {
+	width:10vw;
+}
+
+.wideSearchField {
+	width: calc(60vw - 35px);
+}
+
+.narrowSearchField {
+	width: calc(40vw - 35px);
+}
+
+.listBox {
+	margin-bottom:-1px;
+	border:1px solid red;
+	padding: 10px 0px;
+}
+
+.listBox p, h1, h2, h3, h4 {
+	margin-right:10px;
+	margin-left:10px;
+}
+
+.listBoxLink {
+	text-decoration: none;
+	color: black;
+}
+
+.searchByButton {
+	text-decoration: none;
+	padding:5px;
+	color: black;
+	background: orange;
+	border-radius: 5px;
+	margin-bottom: 3vh;
+}
+
+.buttonLink {
+	text-decoration: none;
+}
+
+.centerText {
+	text-align: center;
+}
+
+.itemBox {
+	width: 90%;
+	border:1px solid grey;
+	border-radius: 5px;
+	padding: 2vw;
+}
+
+.itemRow {
+	vertical-align: middle;
+	margin-bottom: 3vw;
+	text-align: center;
+}
+
+.itemBox img {
+	height: 25vw;
+}
+.itemBox p {
+	vertical-align: top;
 }
