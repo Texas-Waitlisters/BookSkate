@@ -18,7 +18,7 @@ class SchoolSearch extends Component {
 	componentWillMount() {
 		console.log(URL.toUrl(this.state.schoolName));
 		$.ajax({
-			url: 'http://35.202.103.55/schoolsearch?school=' + URL.toUrl(this.state.schoolName), dataType: 'json', cache: false, 
+			url: 'http://35.202.103.55:5000/schoolsearch?school=' + URL.toUrl(this.state.schoolName), dataType: 'json', cache: false, 
 			success: function(data) {
 				console.log(data);
 				var state = this.state;

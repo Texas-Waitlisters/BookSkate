@@ -20,7 +20,7 @@ class ClassDetails extends Component {
 
 	componentWillMount() {
 		$.ajax({
-			url: 'http://35.202.103.55/getclass?key=' + this.state.key, dataType: 'json', cache: false, 
+			url: 'http://35.202.103.55:5000/getclass?key=' + this.state.key, dataType: 'json', cache: false, 
 			success: function(data) {
 				var state = this.state;
 				state.class = data.class;
