@@ -9,7 +9,7 @@ class Index extends Component {
 				<Header />
 				<div className="splash">
 					<img src="http://publish.uwo.ca/~flagzian/images/banner.png"/>
-					<div className="splash-text">
+					<div className="splash-text centered">
 						<h2>Welcome to Top of the Class</h2>
 						<h3>Top of the Class is the best way to see how much your classes will <em>really</em> cost this semester.</h3>
 						<h3>We gather data from current and previous students in the same classes to see what extra supplies they had to buy for class.</h3>
