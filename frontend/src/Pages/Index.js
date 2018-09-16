@@ -7,9 +7,17 @@ class Index extends Component {
 		return(
 			<div className="pageContent">
 				<Header />
-				<div className="search-field">
-					<form className="wide searchbar centered" action="school.html">
-						<input id="schoolSearchField" className="wide SearchField" type="text" placeholder="Search for your school" name="school" />
+				<div className="splash">
+					<img src="http://publish.uwo.ca/~flagzian/images/banner.png"/>
+					<div className="splash-text">
+					<h1>Welcome to Top of the Class</h1>
+					<h2>Top of the Class is the best way to see how much your classes will <em>really</em> cost this semester.</h2>
+			<h2>We gather data from current and previous students in the same classes to see what extra supplies they had to buy for class.</h2>
+				</div>
+				</div>
+				<div className="splash-search">
+					<form action="school.html">
+						<input id="schoolSearchField" className="wide splash-searchbar" type="text" placeholder="Search for your school" name="school" />
 						<button className="search"><i className="fa fa-search"></i></button>
 					</form>
 					</div>

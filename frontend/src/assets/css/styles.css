@@ -45,6 +45,46 @@ form button {
 	margin-right:auto;
 }
 
+.splash {
+	position:relative
+}
+
+.splash-text {
+	width: 100%;
+	max-width:1000px;
+	bottom:20px;
+	right:20px;
+	text-align: center;
+	position: absolute;
+	color: white;
+}
+
+.splash img{
+	filter: brightness(50%);
+	width: 100%;
+	z-index: -1;
+	position: relative;
+}
+
+.splash-search {
+	text-align: center;
+	width: 70%;
+	margin-top: 15%;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.splash-searchbar {
+	border:0px solid #a9a9a9;
+	border-radius: 5px;
+	height: 50px;
+	padding-left: 15px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+}
+
 .SearchField {
 	border:0px solid #a9a9a9;
 	border-radius: 5px;

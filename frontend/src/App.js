@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router from './Router';
+// eslint-disable-next-line
 import { Link } from 'react-router';
 import './assets/css/styles.css';
 

@@ -11,6 +11,8 @@ class Class:
                 'course_num': self.course_num,
                 'name': self.name,
                 'key': self.key};
+def map_to_class(row):
+    return Class(row['unique_id'], row['professor'], row['course_num'], row['name'], row['id'])
 
 class Item:
     def __init__(self, name, image_url, price, isbn):
@@ -21,5 +23,7 @@ class Item:
     def get_map(self):
         return {'name' : self.name,
                 'image_url' : self.image_url,
-                'price': self.price,
+                'price': float(self.price),
                 'isbn': self.isbn};
+def map_to_item(row):
+    return Item(row['name'], row['image_url'], row['price'], row['isbn']);
