@@ -21,10 +21,11 @@ def get_school_name(id):
 #Return list<Class> of classes like this
 #Unique_id, prof, course_num and name may be None
 def get_classes(school, unique_id, prof, course_num, name):
-    unique_id_query = "1=1" if unique_id == None else ("uniqued_id = %d" % unique_id)
-    prof_query = "1=1" if prof == None else ("professor like %%%s%%" % prof)
-    course_num_query = "1=1" if course_num == None else ("course_num = %d" % course_num)
-    name_query = "1=1" if name == None else ("name like %%%s%%" % name)
+    unique_id_query = "1=0" if unique_id == None else ("unique_id = %d" % unique_id)
+    prof_query = "1=0" if prof == None else ("professor like '%%%s%%'" % prof)
+    course_num_query = "1=0" if course_num == None else ("course_num = %d" % course_num)
+    name_query = "1=0" if name == None else ("name like '%%%s%%'" % name)
+    print("select * from classes where school_id = %d and (%s or %s or %s or %s)" % (school, unique_id_query,prof_query,course_num_query,name_query))
     sql.execute("select * from classes where school_id = %d and (%s or %s or %s or %s)" % (school, unique_id_query,prof_query,course_num_query,name_query))
     data = sql.fetchall()
     return list(map(lambda x: map_to_class(x), data))
