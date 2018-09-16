@@ -45,7 +45,6 @@ class ClassDetails extends Component {
 			if (item.isbn !== undefined) {
 				return (
 					<div className="wide centered itemRow">
-						<input className="checkbox" onClick={() => this.toggleCheckbox(index)} type="checkbox" checked={this.state.checked[index]}/>
 						<div className="itemBox">
 							<img className="centerText" src={item.image_url} alt={"Image of " + item.name}/>
 							<p>

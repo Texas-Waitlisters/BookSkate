@@ -7,10 +7,12 @@ class Index extends Component {
 		return(
 			<div className="pageContent">
 				<Header />
-				<form className="narrow searchbar centered" action="school.html">
-					<input className="narrowSearchField" type="text" placeholder="Search for your school" name="school" />
-					<button type="submit"><i className="fa fa-search"></i></button>
-				</form>
+				<div className="search-field">
+					<form className="wide searchbar centered" action="school.html">
+						<input id="schoolSearchField" className="wide SearchField" type="text" placeholder="Search for your school" name="school" />
+						<button className="search"><i className="fa fa-search"></i></button>
+					</form>
+					</div>
 				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
 			</div>
 		);

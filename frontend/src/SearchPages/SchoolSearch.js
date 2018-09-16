@@ -41,7 +41,7 @@ class SchoolSearch extends Component {
 		let allSchools = this.state.schools.map(school => {
 			return (
 				<a href={"classSearch/" + school["id"]+"="+URL.toUrl(school["name"])} className="listBoxLink">
-					<div className="wide listBox">
+					<div className="wide listBox centered">
 						<h3>{URL.convert(school["name"], "_", " ")}</h3>
 					</div>
 				</a>
@@ -56,10 +56,12 @@ class SchoolSearch extends Component {
 			<div className="pageContent">
 				<Header />
 				<div className="wide centered">
-					<form className="wide searchbar centered" action="school.html">
-						<input id="schoolSearchField" className="wideSearchField" type="text" placeholder="Search for your school" defaultValue={schoolName} name="school" />
-						<button type="submit"><i className="fa fa-search"></i></button>
-					</form>
+					<div className="search-field">
+						<form className="wide searchbar centered" action="school.html">
+							<input id="schoolSearchField" className="centered wide SearchField" type="text" placeholder="Search for your school" defaultValue={schoolName} name="school" />
+							<button className="search"><i className="fa fa-search"></i></button>
+						</form>
+					</div>
 					{allSchools}
 				</div>
 				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>

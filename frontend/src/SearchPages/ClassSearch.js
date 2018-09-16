@@ -83,7 +83,7 @@ class ClassSearch extends Component {
 				<Header />
 				<h1 className="narrow centered centerText">{schoolName}</h1>
 				<form className="wide searchbar centered" action="">
-					<input id="classSearchField" className="wideSearchField" type="text" placeholder={"Search Class by " + searchModeDisplay[searchMode]} defaultValue={URL.plusToSpace(URL.getParamValue(searchMode))} name={searchMode} />
+					<input id="classSearchField" className="wide SearchField" type="text" placeholder={"Search Class by " + searchModeDisplay[searchMode]} defaultValue={URL.plusToSpace(URL.getParamValue(searchMode))} name={searchMode} />
 					<button type="submit"><i className="fa fa-search"></i></button>
 				</form>
 				<br />
