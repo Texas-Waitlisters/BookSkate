@@ -69,7 +69,7 @@ class ClassSearch extends Component {
 		let searchModeDisplay = {
 			"Name": "Class Name",
 			"Professor": "Professor",
-			"ClassNum": "Course Number",
+			"CourseNum": "Course Number",
 			"CourseId": "Unique Id"
 		}
 
