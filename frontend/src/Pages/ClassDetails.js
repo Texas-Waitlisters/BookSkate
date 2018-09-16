@@ -78,7 +78,7 @@ class ClassDetails extends Component {
 				<h3 className="narrow centered centerText">{this.state.class.prof}<br/>
 				{this.state.class.course_num}</h3>
 				{allItems}
-				<h3 className="wide centered">TOTAL: ${totalCost}</h3>
+				<h2 className="wide centered centerText">TOTAL: ${totalCost}</h2>
 				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
 			</div>
 		);

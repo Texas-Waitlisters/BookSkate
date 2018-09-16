@@ -52,10 +52,11 @@ form button {
 .splash-text {
 	width: 90vw;
 	bottom:20px;
-	right:20px;
 	text-align: center;
 	position: absolute;
 	color: white;
+	padding-left:5vw;
+	padding-right:5vw;
 }
 
 .splash-text h2 {
@@ -144,11 +145,12 @@ form button {
 
 .itemBox {
 	width: 84%;
-	border:1px solid grey;
-	border-radius: 5px;
+	border:0px solid grey;
+	border-radius: 10px;
 	padding: 2vw;
 	display: inline-block;
 	vertical-align: middle;
+	background-color: #ceeeff;
 }
 
 .itemRow {
@@ -159,6 +161,7 @@ form button {
 
 .itemBox img {
 	height: 25vw;
+	border-radius: 10px;
 }
 .itemBox p {
 	vertical-align: top;

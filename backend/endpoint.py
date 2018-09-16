@@ -28,7 +28,7 @@ def search_classes():
     prof = request.args.get('prof')
     course_num = request.args.get('course_num')
     course_num = None if course_num == None else int(course_num)
-    name = request.args.get('name')
+    name = request.args.get('Name')
     data = {'classes': list(map(lambda x: x.get_map(), get_classes(key, unique_id, prof, course_num, name)))}
     resp = Response(json.dumps(data), mimetype='application/json')
     print(data)
