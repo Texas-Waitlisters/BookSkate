@@ -17,7 +17,7 @@ class ClassSearchSelect extends Component {
 
 	componentWillMount() {
 		$.ajax({
-			url: 'http://35.202.103.55:5000/getschoolname?key=' + this.state.schoolId, dataType: 'json', cache: false, 
+			url: 'http://35.238.46.22:5000/getschoolname?key=' + this.state.schoolId, dataType: 'json', cache: false, 
 			success: function(data) {
 				var state = this.state;
 				state.schoolName = data.school[0].name;
