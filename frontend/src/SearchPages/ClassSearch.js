@@ -21,7 +21,7 @@ class ClassSearch extends Component {
 
 	componentWillMount() {
 		$.ajax({
-			url: 'http://35.202.103.55:5000/getclasses?key=' + URL.toUrl(this.state.schoolId) + "&" + URL.convert(this.state.queryString, "+", "_"), dataType: 'json', cache: false, 
+			url: 'http://35.238.46.22:5000/getclasses?key=' + URL.toUrl(this.state.schoolId) + "&" + URL.convert(this.state.queryString, "+", "_"), dataType: 'json', cache: false, 
 			success: function(data) {
 				var state = this.state;
 				state.classes = data.classes;
